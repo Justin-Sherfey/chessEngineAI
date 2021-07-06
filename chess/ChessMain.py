@@ -36,7 +36,7 @@ def main():
     gs = ChessEngine.GameState()
     load_images()  # only do this once before while loop
     running = True
-
+    print("here")
     while running:
         for e in p.event.get():
             if e.type == p.QUIT:
@@ -62,7 +62,7 @@ Draws squares on board, top left square is always light
 
 
 def draw_board(screen):
-    colors = [p.Color("white"), p.color("gray")]
+    colors = [p.Color("white"), p.Color("gray")]
     for r in range(DIMENSION):
         for c in range(DIMENSION):
             color = colors[((r + c) % 2)]
@@ -77,6 +77,9 @@ Draws the pieces on the board using the current gamestate.board
 def draw_pieces(screen, board):
     for r in range(DIMENSION):
         for c in range(DIMENSION):
-            piece = board[r, c]
+            piece = board[r][c]
             if piece != "--":
                 screen.blit(IMAGES[piece], p.Rect(c * SQ_SIZE, r * SQ_SIZE, SQ_SIZE, SQ_SIZE))
+
+if __name__ == "__main__":
+    main()
